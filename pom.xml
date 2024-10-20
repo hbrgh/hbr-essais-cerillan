@@ -5,23 +5,28 @@
   <version>1.0.0</version>
   <name>hbr-essais-cerillan</name>
   <properties>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<java.version>1.8</java.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<check-dependencies-java-version>17</check-dependencies-java-version>
+	    <maven.compiler.release>17</maven.compiler.release>
+
+		<customized.jar.name>hbrec</customized.jar.name>
+
 	</properties>
 
 	<build>
 		<plugins>
-			<plugin>
+<!--			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin>
-			<plugin>
+			</plugin>-->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.1.0</version>
@@ -33,12 +38,54 @@
 						</manifest>
 					</archive>
 				</configuration>
+			</plugin>-->
+						<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.3.0</version>
+			</plugin>			
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<finalName>${customized.jar.name}</finalName>
+					<minimizeJar>true</minimizeJar>
+					<transformers>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>jma.TestDataDir</mainClass>
+						</transformer>
+					</transformers>
+<!--					<filters>
+						<filter>
+							<artifact>com.fathzer:jchess-core</artifact>
+							<includes>
+								<include>**</include>
+							</includes>
+						</filter>
+					</filters>-->
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
 
 		
 		</plugins>
 	</build>
 	<dependencies>
+		
+		<dependency>
+		<groupId>com.sun.mail</groupId>
+		<artifactId>javax.mail</artifactId>
+		<version>1.6.2</version>
+	</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 <dependency>
