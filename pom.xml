@@ -8,7 +8,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
 		<check-dependencies-java-version>17</check-dependencies-java-version>
 	    <maven.compiler.release>17</maven.compiler.release>
 
