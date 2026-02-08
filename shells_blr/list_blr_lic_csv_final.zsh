@@ -71,6 +71,8 @@ if [ $? -ne 0 ]; then
 fi
 mizDateNaissanceFormatPostgres ${TMPFILE2} > ${TMPFILE3}
 
-paste ${TMPFILE1} ${TMPFILE3} | awk '{$1=$1}1' | sed 's/;[[:space:]]\{1,\}/;/g'
+paste ${TMPFILE1} ${TMPFILE3} | awk '{$1=$1}1' | sed 's/;[[:space:]]\{1,\}/;/g' | tail -r | awk -F \; '!(a[$2]++)' |  tail -r
+
+
 
 exit 0
