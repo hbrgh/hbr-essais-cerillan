@@ -9,8 +9,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 	
-		<check-dependencies-java-version>17</check-dependencies-java-version>
-	    <maven.compiler.release>17</maven.compiler.release>
+		<check-dependencies-java-version>21</check-dependencies-java-version>
+	    <maven.compiler.release>21</maven.compiler.release>
 
 		<customized.jar.name>hbrec</customized.jar.name>
 
